@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xbox Gamertag Generator</title>
+    <style>
+        /* Retro Gaming Inspired Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #1e1e1e;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            border: 2px solid #107c10; /* Xbox Green */
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #107c10;
+            margin-top: 0;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .display-box {
+            background-color: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-height: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        button {
+            background-color: #107c10;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #189e18;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Tag Generator</h1>
+        <div class="display-box" id="gamertag-display">Click Generate!</div>
+        <button id="generate-btn">Generate Gamertag</button>
+    </div>
+
+    <script>
+        // Word lists stored cleanly in frontend arrays
+        const prefixes = ["Cyber", "Ghost", "Neon", "Shadow", "Apex", "Vortex", "Alpha", "Quantum", "Toxic", "Rogue"];
+        const nouns = ["Viper", "Knight", "Titan", "Phoenix", "Ninja", "Reaper", "Samurai", "Echo", "Hunter", "Omega"];
+
+        const displayBox = document.getElementById("gamertag-display");
+        const generateBtn = document.getElementById("generate-btn");
+
+        function generateGamertag() {
+            // Pick a random element from each array
+            const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+            const randomNoun = nouns[Math.floor(Math.random() * nouns.length)];
+            
+            // Generate a random number between 10 and 99
+            const randomNumber = Math.floor(Math.random() * 90) + 10;
+
+            // Combine them together
+            const newTag = randomPrefix + randomNoun + randomNumber;
+
+            // Update the UI
+            displayBox.textContent = newTag;
+        }
+
+        // Run the function when the button is clicked
+        generateBtn.addEventListener("click", generateGamertag);
+    </script>
+
+</body>
+</html>
